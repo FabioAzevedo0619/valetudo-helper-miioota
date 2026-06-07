@@ -29,10 +29,10 @@ module.exports = async (filePath) => {
 
 
     const ourIP = Tools.GET_CURRENT_HOST_IPV4_ADDRESSES().filter(ip => {
-        return ip.startsWith("192.168.8.");
+        return ip.startsWith("10.1.1.");
     })?.[0];
     if (!ourIP) {
-        console.error("ERROR: There's no network interface with an IPv4 address in 192.168.8.0/24.");
+        console.error("ERROR: There's no network interface with an IPv4 address in 10.1.1.0/24.");
         console.error("We're not connected to the robots Wi-Fi Access Point");
 
         console.log("\n\nExiting..");
@@ -49,14 +49,14 @@ module.exports = async (filePath) => {
 
         console.log("Robot discovery started...");
 
-        discoverySocket.send(HELO, MiioSocket.PORT, "192.168.8.255");
+        discoverySocket.send(HELO, MiioSocket.PORT, "10.1.1.255");
 
         setTimeout(() => {
-            discoverySocket.send(HELO, MiioSocket.PORT, "192.168.8.255");
+            discoverySocket.send(HELO, MiioSocket.PORT, "10.1.1.255");
         }, 1000);
 
         setTimeout(() => {
-            discoverySocket.send(HELO, MiioSocket.PORT, "192.168.8.255");
+            discoverySocket.send(HELO, MiioSocket.PORT, "10.1.1.255");
         }, 3000);
 
     });
